@@ -1,80 +1,114 @@
 # GrowEasy AI-Powered CSV Import Pipeline
 
-## Overview
+An AI-powered CRM CSV import pipeline that uploads customer data, validates and enriches it using Google's Gemini AI, and displays CRM-ready records.
 
-This project is an AI-powered CRM CSV Import Pipeline built for the GrowEasy Software Developer Internship Assignment.
-
-The application uploads a CSV file, validates records using Google Gemini AI, converts them into a standardized CRM format, and displays the final imported records.
-
----
-
-## Features
-
-- CSV Upload
-- AI-powered field extraction using Google Gemini
-- CRM field validation
-- Skip invalid records
-- Preview imported records
-- Import summary
-- Responsive UI
-- REST API backend
-
----
-
-## Tech Stack
+## Live Demo
 
 ### Frontend
+https://groweasy-ai-csv-importer-theta.vercel.app
 
-- React
+### Backend API
+https://groweasy-ai-csv-importer-backend-7a81.onrender.com
+
+### Health Check
+https://groweasy-ai-csv-importer-backend-7a81.onrender.com/health
+
+---
+
+## GitHub Repository
+
+https://github.com/Alanatk/groweasy-ai-csv-importer
+
+---
+
+# Features
+
+- Upload CSV files
+- AI-powered data enrichment using Google Gemini
+- CRM data validation
+- Skip invalid records
+- Display imported CRM records
+- Import statistics
+- Responsive user interface
+- REST API backend
+- Cloud deployment using Render and Vercel
+
+---
+
+# Tech Stack
+
+## Frontend
+
 - Next.js
+- React
 - TypeScript
+- Tailwind CSS
 
-### Backend
+## Backend
 
 - Node.js
 - Express.js
 - TypeScript
+- Axios
 - Multer
 - CSV Parser
-- Axios
 
-### AI
+## AI
 
 - Google Gemini API
 
+## Deployment
+
+- Vercel (Frontend)
+- Render (Backend)
+
 ---
 
-## Folder Structure
+# Project Structure
 
 ```
-groweasy-assignment/
+groweasy-ai-csv-importer
 │
-├── frontend/
-├── backend/
-├── README.md
-└── .gitignore
+├── frontend
+│   ├── app
+│   ├── components
+│   ├── lib
+│   └── public
+│
+├── backend
+│   ├── src
+│   ├── storage
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── docker-compose.yml
 ```
 
 ---
 
-## Installation
+# Installation
 
-### Clone Repository
+## Clone Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/groweasy-assignment.git
+git clone https://github.com/Alanatk/groweasy-ai-csv-importer.git
+
+cd groweasy-ai-csv-importer
 ```
 
 ---
 
-### Backend
+# Backend Setup
 
 ```bash
 cd backend
+
 npm install
 ```
 
-Create `.env`
+Create a `.env` file.
+
+Example:
 
 ```env
 GEMINI_API_KEY=YOUR_API_KEY
@@ -84,7 +118,7 @@ GEMINI_MODEL=gemini-2.5-flash
 BATCH_SIZE=10
 ```
 
-Run
+Run backend
 
 ```bash
 npm run dev
@@ -92,60 +126,146 @@ npm run dev
 
 ---
 
-### Frontend
+# Frontend Setup
 
 ```bash
 cd frontend
+
 npm install
+```
+
+Create `.env.local`
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000
+```
+
+Run frontend
+
+```bash
 npm run dev
 ```
 
 ---
 
-## API
+# Build
 
-### Health Check
+Backend
+
+```bash
+npm run build
+npm start
+```
+
+Frontend
+
+```bash
+npm run build
+npm start
+```
+
+---
+
+# API Endpoints
+
+## Health Check
 
 ```
 GET /health
 ```
 
-### Upload CSV
+Response
+
+```json
+{
+  "ok": true
+}
+```
+
+---
+
+## Upload CSV
 
 ```
 POST /upload
 ```
 
-### Process Import
+---
+
+## Process CSV
 
 ```
 POST /process
 ```
 
----
+Returns
 
-## Sample Workflow
-
-1. Upload CSV
-2. Preview records
-3. Click Confirm Import
-4. Gemini validates records
-5. View CRM table
-6. Download/Review results
-
----
-
-## AI Validation Rules
-
-- Skip records without Email and Mobile Number
-- Validate CRM Status
-- Validate Data Source
-- Normalize CRM fields
-- Return structured JSON
+```json
+{
+  "importedCount": 10,
+  "skippedCount": 0,
+  "records": []
+}
+```
 
 ---
 
-## Author
+# Sample Output
 
-Alan Thomas
+```
+Imported Count : 10
 
+Skipped Count : 0
+
+Final Records : 10
+```
+
+The processed CRM records are displayed in a responsive table.
+
+---
+
+# Deployment
+
+## Frontend
+
+Hosted on Vercel
+
+## Backend
+
+Hosted on Render
+
+---
+
+# Environment Variables
+
+Backend
+
+```env
+GEMINI_API_KEY=
+PORT=
+CLIENT_URL=
+GEMINI_MODEL=
+BATCH_SIZE=
+```
+
+Frontend
+
+```env
+NEXT_PUBLIC_API_URL=
+```
+
+---
+
+# Author
+
+**Alan Thomas**
+
+GitHub
+
+https://github.com/Alanatk
+
+---
+
+# License
+
+This project is developed as part of the GrowEasy AI CSV Import Assignment.
